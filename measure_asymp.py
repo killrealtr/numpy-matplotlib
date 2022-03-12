@@ -34,16 +34,8 @@ def heapsort(A):
     n=len(A)
     build_heap(A)
     for i in range(n):
-        print(*A)
         swap(A,0,n-1-i)
         sift_down(A,0,n-1-i)
-
-def sum(i):
-    i=int(i)
-    s=0
-    for j in range(i):
-        s+=j
-    return s
 
 def measure(a):
     start=time.time()
@@ -61,12 +53,19 @@ import random
 import matplotlib.pyplot as plt
 import os
 
-os.chdir('/C/Users/ACER/Repos/workdir')
+#os.chdir('C:\\Users\\ACER\\Repos\\workdir')
 
 x=np.linspace(2,10000, 10)
-plt.plot(x,[measure(rand_arr(i)) for i in x], color='blue')
-plt.plot(x, [0.0000001175*(i**2) for i in x], color='red')
+#k=float(input())
+#print(measure(rand_arr(10000))/(1000*np.log(1000)))
+plt.plot(x,[measure(rand_arr(i)) for i in x],label='Insertion sorting asymptotics' , color='blue')
+plt.plot(x, [0.0000001175*1.5*(i**2) for i in x],label='Parabolic approximation', color='red')
 
+plt.title('Asymptotics measurement')
+plt.xlabel('Length of an array')
+plt.ylabel('Working time, s')
+
+plt.legend()
 
 plt.savefig('ins_sort.png')
 
