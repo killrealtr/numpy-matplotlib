@@ -39,7 +39,7 @@ def heapsort(A):
 
 def measure(a):
     start=time.time()
-    heapsort(a)
+    a.sort()
     end=time.time()
     return end-start
 
@@ -58,8 +58,8 @@ import os
 x=np.linspace(2,10000, 10)
 #k=float(input())
 #print(measure(rand_arr(10000))/(1000*np.log(1000)))
-plt.plot(x,[measure(rand_arr(i)) for i in x],label='Heap sorting asymptotics' , color='blue')
-plt.plot(x, [0.0000025*1.5*i*np.log(i) for i in x],label='Linearithmic approximation', color='red')
+plt.plot(x,[measure(rand_arr(i)) for i in x],label='Default Python sorting asymptotics' , color='blue')
+plt.plot(x, [0.0000000025*i*np.log(i) for i in x],label='Linearithmic approximation', color='red')
 
 plt.title('Asymptotics measurement')
 plt.xlabel('Length of an array')
@@ -67,5 +67,5 @@ plt.ylabel('Working time, s')
 
 plt.legend()
 
-plt.savefig('heap_sort.png')
+plt.savefig('default_sort.png')
 
